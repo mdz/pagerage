@@ -21,6 +21,8 @@ describe Pagerage::Config do
     end
 
     it 'should return a sane value if DATABASE_URL is not set' do
+      var = 'DATABASE_URL'
+      ENV.stub(:[]).with(var) { nil }
       Pagerage::Config.database_url.should eq('postgres://localhost/pagerage')
     end
   end
